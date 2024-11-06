@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator - Divide Function</title>
+    <script>
+      function divide(a, b) {
+        try {
+          if (typeof a !== 'number' || typeof b !== 'number') {
+            throw new Error('Input harus berupa angka.');
+          }
+
+          if (a === 0 || b === 0) {
+            throw new Error('Pembagian dengan nol tidak diperbolehkan.');
+          }
+
+          return a / b;
+        } catch (error) {
+          console.error(error.message);
+          return error.message;
+        }
+      }
+
+      function performDivision() {
+        const num1 = parseFloat(document.getElementById('number1').value);
+        const num2 = parseFloat(document.getElementById('number2').value);
+        const result = divide(num1, num2);
+
+        document.getElementById('result').textContent = isNaN(result) ? 'Terjadi kesalahan. Cek input Anda.' : `Hasil: ${result}`;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Calculator - Divide Function</h2>
+
+    <label for="number1">Angka Pertama:</label>
+    <input type="text" id="number1" placeholder="Masukkan angka pertama" />
+
+    <label for="number2">Angka Kedua:</label>
+    <input type="text" id="number2" placeholder="Masukkan angka kedua" />
+
+    <button onclick="performDivision()">Hitung Pembagian</button>
+
+    <p id="result">Hasil akan muncul di sini.</p>
+  </body>
+</html>
